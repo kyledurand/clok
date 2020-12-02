@@ -1,36 +1,37 @@
-import * as React from "react";
-import { StyleSheet } from "react-native";
-
-import EditScreenInfo from "../components/EditScreenInfo";
-import { Text, View } from "../components/Themed";
+import React, {useContext} from 'react';
+import {StyleSheet} from 'react-native';
+import {Text, View} from '../components/Themed';
+import {Context} from '../context';
 
 export default function TabOneScreen() {
+  const {time} = useContext(Context);
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+    <View style={styles.Container}>
+      <Text style={styles.Title}>
+        {time?.hours || 0}:{time?.minutes || 0}:{time?.seconds || 0}
+      </Text>
       <View
-        style={styles.separator}
+        style={styles.Separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/TabOneScreen.js" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  Container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  title: {
+  Title: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
-  separator: {
+  Separator: {
     marginVertical: 30,
     height: 1,
-    width: "80%",
+    width: '80%',
   },
 });
